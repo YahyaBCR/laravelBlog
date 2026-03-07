@@ -26,7 +26,7 @@ class PostController extends Controller
         ], 201);
     }
     public function show(Post $post){
-        return response()->json($post->load('user'), 200);
+        return response()->json($post->load('user', 'comments.user'), 200);
     }
     public function update(UpdatePostRequest $request, Post $post){
         if($post->user_id !== Auth::id()){
